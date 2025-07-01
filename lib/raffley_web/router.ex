@@ -19,6 +19,7 @@ defmodule RaffleyWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/rules", RuleController, :index
   end
 
   def spy(conn, _opts) do
