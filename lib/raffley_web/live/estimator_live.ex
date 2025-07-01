@@ -30,6 +30,11 @@ defmodule RaffleyWeb.EstimatorLive do
           {@tickets * @price}
         </div>
       </section>
+
+      <form phx-submit="set-price">
+        <label>Ticket Price:</label>
+        <input type="number" name="price" value={@price} min="1" />
+      </form>
     </div>
     """
   end
@@ -39,6 +44,13 @@ defmodule RaffleyWeb.EstimatorLive do
     # {:noreply, assign(socket, :tickets, tickets)}
 
     quantity = String.to_integer(quantity)
+
     {:noreply, update(socket, :tickets, &(&1 + quantity))}
+  end
+
+  def handle_event("set-price", %{"price" => price}, socket) do
+    socket = assign(socket, :price, String.to_integer(price))
+
+    {:noreply, socket}
   end
 end
