@@ -35,4 +35,7 @@ RUN su vscode -c "mix local.hex --force && \
 RUN su vscode -c "sed -i 's/ZSH_THEME=\"codespaces\"/ZSH_THEME=\"bira\"/' ~/.zshrc || \
   echo 'ZSH_THEME=\"bira\"' >> ~/.zshrc"
 
+# Configure Git settings for better developer experience
+RUN su vscode -c "git config --global push.autoSetupRemote true"
+
 WORKDIR /workspace
