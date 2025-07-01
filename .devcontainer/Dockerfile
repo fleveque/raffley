@@ -31,4 +31,8 @@ RUN su vscode -c "mix local.hex --force && \
   mix local.rebar --force && \
   mix archive.install --force hex phx_new 1.7.21"
 
+# Configure Oh My Zsh theme to show git branch
+RUN su vscode -c "sed -i 's/ZSH_THEME=\"codespaces\"/ZSH_THEME=\"bira\"/' ~/.zshrc || \
+  echo 'ZSH_THEME=\"bira\"' >> ~/.zshrc"
+
 WORKDIR /workspace
